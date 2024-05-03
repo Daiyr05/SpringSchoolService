@@ -1,6 +1,9 @@
 package com.example.freecode;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table
@@ -10,12 +13,25 @@ public class School {
     @GeneratedValue(generator = "school_sequence", strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
+    @OneToMany(
+            mappedBy = "school"
+    )
+    @JsonManagedReference
+    private List<Student> studentList;
 
     public School() {
     }
 
     public School(String name) {
         this.name = name;
+    }
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
     }
 
     public Long getId() {

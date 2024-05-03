@@ -16,14 +16,21 @@ public class StudentController {
     }
 
     @PostMapping("/post")
-    public void addStudent(@RequestBody Student student){
+    public Student addStudent(@RequestBody StudentDto studentDto){
+        Student student = toStudent(studentDto);
         Optional<Student> optionalStudent = studentRepository.findByEmail(student.getEmail());
         if(optionalStudent.isPresent()){
             throw new IllegalStateException("Student is already added");
         }
-        studentRepository.save(student);
+       return studentRepository.save(student);
     }
-
+    private Student toStudent(StudentDto studentDto){
+        var student = new Student(studentDto.firstName(),studentDto.lastName(),studentDto.email());
+        var school = new School();
+        school.setId(studentDto.schoolId());
+        student.setSchool(school);
+        return student;
+    }
     @GetMapping("/students")
     public List<Student> getStudents(){
         return studentRepository.findAll();
@@ -42,6 +49,6 @@ public class StudentController {
     public List<Student> getStudentsByName(@PathVariable("name") String name){
         return studentRepository.findAllByFirstNameContaining(name);
     }
-    
+
 
 }
