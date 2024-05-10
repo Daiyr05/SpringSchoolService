@@ -1,4 +1,4 @@
-package com.example.freecode;
+package com.example.freecode.school;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

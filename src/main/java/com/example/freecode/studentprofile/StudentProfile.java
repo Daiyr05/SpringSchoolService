@@ -1,5 +1,6 @@
-package com.example.freecode;
+package com.example.freecode.studentprofile;
 
+import com.example.freecode.student.Student;
 import jakarta.persistence.*;
 
 @Entity

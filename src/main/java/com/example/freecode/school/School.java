@@ -1,5 +1,6 @@
-package com.example.freecode;
+package com.example.freecode.school;
 
+import com.example.freecode.student.Student;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 

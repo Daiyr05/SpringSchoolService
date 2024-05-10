@@ -1,5 +1,7 @@
-package com.example.freecode;
+package com.example.freecode.student;
 
+import com.example.freecode.school.School;
+import com.example.freecode.studentprofile.StudentProfile;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
