@@ -35,7 +35,6 @@ public class StudentService {
     }
 
     public List<StudentResponseDto> getStudents(){
-
         return studentRepository.findAll().stream().map((Student student)->studentMapper.toResponseStudent(student)).collect(Collectors.toList());
     }
 
